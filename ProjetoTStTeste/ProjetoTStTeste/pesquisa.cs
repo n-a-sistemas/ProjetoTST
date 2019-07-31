@@ -27,7 +27,9 @@ namespace ProjetoTStTeste
             dgvpesquisa.DataSource = pes.PesquisaPorNome(txtpesquisa.Text);
             dgvpesquisa.Columns[13].Visible = false;
             dgvpesquisa.Columns[14].Visible = false;
+            dgvpesquisa.Columns[16].Visible = false;
             dgvpesquisa.Columns[8].Visible = false;
+            dgvpesquisa.Columns[0].Visible = false;
             dgvpesquisa.AutoResizeColumns();
 
         }
@@ -37,11 +39,7 @@ namespace ProjetoTStTeste
             this.Close();
         }
 
-        private void btepi_Click(object sender, EventArgs e)
-        {
-
-            
-        }
+       
 
         private void dgvpesquisa_MouseClick(object sender, MouseEventArgs e)
         {
@@ -49,7 +47,7 @@ namespace ProjetoTStTeste
 
             if (linha.Count != 1)
             {
-                MessageBox.Show("Selecione 1 cliente para editar", "Cliente não selecionado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Selecione 1 funcionário para editar", "Funcionário não selecionado", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -58,7 +56,7 @@ namespace ProjetoTStTeste
             pes.Id_Profissao = Convert.ToInt32(linha[0].Cells[8].Value);
             dgvepii.DataSource = pes.Pesquisaepi();
             dgvepii.AutoResizeColumns();
-            pes.IdCliente = Convert.ToInt32(linha[0].Cells[0].Value);
+            pes.Id_Funcionario = Convert.ToInt32(linha[0].Cells[0].Value);
             dgvexame.DataSource = pes.exames();
             dgvexame.AutoResizeColumns();
             dgvexame.Columns[0].Width = 238;
@@ -68,26 +66,29 @@ namespace ProjetoTStTeste
         private void btnalterar_Click(object sender, EventArgs e)
         {
             DataGridViewSelectedRowCollection linha = dgvpesquisa.SelectedRows;
+            
 
             if (linha.Count != 1)
             {
-                MessageBox.Show("Selecione 1 cliente para editar", "Cliente não selecionado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Selecione 1 funcionário para editar", "Funcionário não selecionado", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
 
             Pessoa pes = new Pessoa();
-            pes.IdCliente = Convert.ToInt32(linha[0].Cells[0].Value);
+            pes.Id_Funcionario = Convert.ToInt32(linha[0].Cells[0].Value);
             pes.Nome = linha[0].Cells[1].Value.ToString();
             pes.Cpf = linha[0].Cells[2].Value.ToString();
             pes.Dt_nascimento = Convert.ToDateTime(linha[0].Cells[3].Value.ToString());
             pes.Endereco = linha[0].Cells[4].Value.ToString();
             pes.Id_Profissao = Convert.ToInt32(linha[0].Cells[8].Value);
             pes.Email = linha[0].Cells[5].Value.ToString();
-            pes.Sexo = linha[0].Cells[9].Value.ToString();
             pes.Bairro = linha[0].Cells[11].Value.ToString();
             pes.Cep = linha[0].Cells[12].Value.ToString();
+            pes.Id_Turno = Convert.ToInt32(linha[0].Cells[16].Value);
             pes.Exame = Convert.ToByte(linha[0].Cells[15].Value);
+
+            
 
 
 
@@ -99,12 +100,16 @@ namespace ProjetoTStTeste
             if (linha[0].Cells[13].Value.ToString() != "")
             {
                 pes.Id_Estado = Convert.ToInt32(linha[0].Cells[14].Value);
+
             }
+
 
             Pessoas Cadastro = new Pessoas();
             Cadastro.pessoa_carrega = pes;
             Cadastro.ShowDialog();
             txtpesquisa_TextChanged(sender, e);
+            
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -118,12 +123,18 @@ namespace ProjetoTStTeste
                 }
                 else
                 {
-                    Pessoa delete_cliente = new Pessoa();
-                    delete_cliente.IdCliente = Convert.ToInt32(linha_selecionada[0].Cells[0].Value.ToString());
-                    delete_cliente.Deletar();
+                    Pessoa delete_funcionario = new Pessoa();
+                    delete_funcionario.Id_Funcionario = Convert.ToInt32(linha_selecionada[0].Cells[0].Value.ToString());
+                    delete_funcionario.Deletartel();
+                    delete_funcionario.Deletar();
                     txtpesquisa_TextChanged(sender, e);
                 }
             }
+        }
+
+        private void dgvexame_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

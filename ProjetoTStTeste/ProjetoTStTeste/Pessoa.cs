@@ -11,11 +11,10 @@ namespace ProjetoTStTeste
 {
     public class Pessoa
     {
-        private int idCliente;
+        private int id_Funcionario;
         private String nome;
         private String cpf;
         private DateTime dt_Nascimento;
-        private int id_Telefone;
         private String email;
         private String endereco;
         private String bairro;
@@ -29,10 +28,10 @@ namespace ProjetoTStTeste
 
         conectaBD BD = new conectaBD();
 
-        public int IdCliente
+        public int Id_Funcionario
         {
-            get { return idCliente; }
-            set { idCliente = value; }
+            get { return id_Funcionario; }
+            set { id_Funcionario = value; }
         }
 
         public string Nome
@@ -72,11 +71,7 @@ namespace ProjetoTStTeste
             set { bairro = value; }
         }
 
-        public int Telefone
-        {
-            get { return id_Telefone; }
-            set { id_Telefone = value; }
-        }
+        
 
         public int Id_Cidade
         {
@@ -135,11 +130,11 @@ namespace ProjetoTStTeste
 
                 if (id > 0)
                 {
-                    MessageBox.Show("Cliente cadastrado com sucesso!", "Cadastro com sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Funcionário cadastrado com sucesso!", "Cadastro com sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    MessageBox.Show("Erro ao cadastrar Cliente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Erro ao cadastrar funcionário", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
 
@@ -218,7 +213,7 @@ namespace ProjetoTStTeste
                 BD._sql = String.Format(new CultureInfo("en-US"),
                     "INSERT INTO TELEFONE (id_funcionario,numero_telefone,descricao_telefone) " +
                     " values ({0},'{1}','{2}')",
-                    idCliente, fone, tipo) + "; SELECT SCOPE_IDENTITY();";
+                    id_Funcionario, fone, tipo) + "; SELECT SCOPE_IDENTITY();";
 
                 BD.ExecutaComando(false, out id);
 
@@ -261,11 +256,12 @@ namespace ProjetoTStTeste
             {
                 BD._sql = "SELECT F.id_funcionario AS 'ID', F.nome_funcionario AS 'NOME', F.cpf_funcionario AS 'CPF',F.data_nascimento AS 'NASCIMENTO',  " +
                             " F.endereco_funcionario AS 'ENDEREÇO', F.email_funcionario AS 'Email' ,CID.CIDADE AS 'Cidade', E.SIGLA as 'UF', F.id_profissao, P.cargo_profissao as 'Profissão',  " + 
-                            "  F.sexo, F.bairro_funcionario, F.cep_funcionario, f.ID_CIDADE, F.ID_ESTADO, F.exame " +
+                            "  F.sexo, F.bairro_funcionario, F.cep_funcionario, f.ID_CIDADE, F.ID_ESTADO, F.exame, F.id_turno, T.Periodo AS 'Turno'  " +
                         " FROM funcionario F  " +
                             "  LEFT JOIN ESTADOS E ON F.ID_ESTADO = E.ID_ESTADO  " +
                             "  LEFT JOIN CIDADES CID ON F.ID_CIDADE = CID.ID_CIDADE  " +
                             " LEFT JOIN profissao P ON F.id_profissao = P.id_profissao " +
+                            "  LEFT JOIN turno T ON f.id_turno = t.id_turno  " +
                         "  WHERE F.nome_funcionario LIKE '%" + nome_pesquisa + "%'";
 
                 return BD.ExecutaSelect();
@@ -301,7 +297,7 @@ namespace ProjetoTStTeste
             {
                 BD._sql = " SELECT exame AS 'EXAMES' " +
                     " FROM funcionario " +
-                    " WHERE id_funcionario = " + idCliente.ToString();
+                    " WHERE id_funcionario = " + id_Funcionario.ToString();
 
                 return BD.ExecutaSelect();
 
@@ -327,18 +323,18 @@ namespace ProjetoTStTeste
                 int exOK = 0;
 
                 BD._sql = String.Format(" UPDATE funcionario SET nome_funcionario  = '{0}' , endereco_funcionario = '{1}' , cep_funcionario = '{2}' , cpf_funcionario =  '{3}' , " +
-                    "  bairro_funcionario = '{4}' , id_profissao = '{5}' , email_funcionario = '{6}' , id_estado = '{7}', id_cidade = '{8}' , data_nascimento = '{9}' , id_turno = '{10}' , sexo = '{11}', exame = '{12}' " +
-                    " WHERE id_funcionario = '{13}' ", nome, endereco, cep, cpf, bairro, id_Profissao, email, id_Estado, id_Cidade, dt_Nascimento, id_turno, sexo, exame, idCliente);
+                    "  bairro_funcionario = '{4}' , id_profissao = '{5}' , email_funcionario = '{6}' , id_estado = '{7}', id_cidade = '{8}' , data_nascimento = '{9}' , id_turno = '{10}' , exame = '{11}'  " +
+                    " WHERE id_funcionario = '{12}' ", nome, endereco, cep, cpf, bairro, id_Profissao, email, id_Estado, id_Cidade, dt_Nascimento, id_turno, exame, id_Funcionario);
 
                 exOK = BD.ExecutaComando(false);
 
                 if (exOK < 0) 
                 {
-                    MessageBox.Show("Erro ao atualizar cliente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Erro ao atualizar funcionário", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
-                    MessageBox.Show("Cliente atualizado com sucesso!", "Atualizado com sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Funcionário atualizado com sucesso!", "Atualizado com sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
             }
@@ -353,7 +349,7 @@ namespace ProjetoTStTeste
             try
             {
                 int exOK = 0;
-                BD._sql = String.Format("DELETE FROM funcionario WHERE id_funcionario = {0}", idCliente);
+                BD._sql = String.Format("DELETE FROM funcionario WHERE id_funcionario = {0}", id_Funcionario);
 
                 exOK = BD.ExecutaComando(false);
 
@@ -373,6 +369,42 @@ namespace ProjetoTStTeste
             }
             return;
         }
+        public void Deletartel()
+        {
+            try
+            {
+                int exOK = 0;
+                BD._sql = String.Format("DELETE FROM telefone WHERE id_funcionario = {0}", id_Funcionario);
+
+                exOK = BD.ExecutaComando(false);
+
+               
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro.: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return;
+        }
+
+        public DataTable Pesquisatelefone()
+        {
+            try
+            {
+                BD._sql = "SELECT numero_telefone AS 'Telefone' , descricao_telefone AS 'Tipo', id_telefone " +
+                    " FROM telefone t " +
+                    " JOIN funcionario f ON f.id_funcionario = t.id_funcionario" +
+                     " WHERE f.id_funcionario = " + Id_Funcionario;
+                return BD.ExecutaSelect();
+            }
+            catch (Exception)
+            {
+            }
+
+            return null;
+        }
+       
 
 
     }
