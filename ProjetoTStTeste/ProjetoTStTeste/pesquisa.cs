@@ -104,7 +104,7 @@ namespace ProjetoTStTeste
             }
 
 
-            Pessoas Cadastro = new Pessoas();
+            Cadastro Cadastro = new Cadastro();
             Cadastro.pessoa_carrega = pes;
             Cadastro.ShowDialog();
             txtpesquisa_TextChanged(sender, e);

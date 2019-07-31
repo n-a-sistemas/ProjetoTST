@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ProjetoTStTeste
 {
-    public partial class Form1 : Form
+    public partial class MenuInicial : Form
     {
-        public Form1()
+        public MenuInicial()
         {
             
             InitializeComponent();
@@ -23,7 +23,7 @@ namespace ProjetoTStTeste
 
         private void adicionarFuncionarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Pessoas addPro = new Pessoas();
+            Cadastro addPro = new Cadastro();
             //addPro.MdiParent = this; // esse aqui e para ativar o container, e so ir no layout e deixa mdicontainer true
             //addPro.WindowState = FormWindowState.Maximized;// e para quando abrir a janela dentro do container ela abre maximizada
        

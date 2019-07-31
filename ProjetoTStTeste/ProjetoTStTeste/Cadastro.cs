@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace ProjetoTStTeste
 {
-    public partial class Pessoas : Form
+    public partial class Cadastro : Form
     {
 
-        public Pessoas()
+        public Cadastro()
         {
             InitializeComponent();
 
