@@ -23,20 +23,20 @@ namespace ProjetoTStTeste
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            if (ValidaCPF(txtCpf.Text))
+            if (ValidaCPF(mskcpf.Text))
             {
 
                 Pessoa pes = new Pessoa();
 
                 pes.Nome = txtNome.Text;
                 pes.Email = txtEmail.Text;
-                pes.Cpf = txtCpf.Text;
-                pes.Dt_nascimento = Convert.ToDateTime(txtdata.Text);
+                pes.Cpf = mskcpf.Text;
+                pes.Dt_nascimento = Convert.ToDateTime(msknascimento.Text);
                 pes.Endereco = txtEndereco.Text;
                 pes.Bairro = txtBairro.Text;
                 pes.Id_Cidade = Convert.ToInt32(cmbCidade.SelectedValue);
                 pes.Id_Estado = Convert.ToInt32(cmbEstado.SelectedValue);
-                pes.Cep = txtcep.Text;
+                pes.Cep = mskCEP.Text;
                 pes.Id_Profissao = Convert.ToInt32(cmbCargo.SelectedValue);
                 pes.Id_Turno = Convert.ToInt32(cmbTurno.SelectedValue);
                
@@ -172,10 +172,10 @@ namespace ProjetoTStTeste
             {
                 pntelefone.Visible = false;
                 DataGridViewRow row = (DataGridViewRow)dgvTelefone.Rows[0].Clone();
-                row.Cells[0].Value = txttel.Text;
+                row.Cells[0].Value = mskTel.Text;
                 row.Cells[1].Value = cmbTipo.Text;
                 dgvTelefone.Rows.Add(row);
-                txttel.Text = "";
+                mskTel.Text = "";
                 cmbTipo.SelectedValue = 0;
 
 
@@ -188,7 +188,7 @@ namespace ProjetoTStTeste
 
                 Telefones tel = new Telefones();
                 tel.Id_Funcionario = Convert.ToInt32(txtId.Text);
-                tel.Numero = txttel.Text;
+                tel.Numero = mskTel.Text;
                 tel.Tipo = cmbTipo.Text;
                 tel.AdicionarTelefone();
 
@@ -211,11 +211,11 @@ namespace ProjetoTStTeste
                 txtId.Text = pessoa_carrega.Id_Funcionario.ToString();
                 txtNome.Text = pessoa_carrega.Nome;
                 txtEmail.Text = pessoa_carrega.Email;
-                txtCpf.Text = pessoa_carrega.Cpf;
-                txtdata.Text = pessoa_carrega.Dt_nascimento.ToShortDateString();
+                mskcpf.Text = pessoa_carrega.Cpf;
+                msknascimento.Text = pessoa_carrega.Dt_nascimento.ToShortDateString();
                 txtEndereco.Text = pessoa_carrega.Endereco;
                 txtBairro.Text = pessoa_carrega.Bairro;
-                txtcep.Text = pessoa_carrega.Cep;
+                mskCEP.Text = pessoa_carrega.Cep;
                 txtEmail.Text = pessoa_carrega.Email;
 
 
@@ -357,6 +357,38 @@ namespace ProjetoTStTeste
             tel.Deletartel2();
             dgvTelefone.Rows.Remove(dgvTelefone.CurrentRow);
             
+        }
+
+       
+
+        private void cmbTipo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbTipo.SelectedIndex == 0)
+            {
+                mskTel.Mask = "(00)0000-0000";
+               
+
+            }
+            if (cmbTipo.SelectedIndex == 1)
+            {
+                mskTel.Mask = "(00)00000-0000";
+
+            }
+            if (cmbTipo.SelectedIndex == 2)
+            {
+                mskTel.Mask = "(00)00000-0000";
+
+            }
+            if (cmbTipo.SelectedIndex == 3)
+            {
+                mskTel.Mask = "0000-0000";
+
+            }
+            if (cmbTipo.SelectedIndex == 4)
+            {
+                mskTel.Mask = "(00)0000-0000";
+
+            }
         }
     }
 }

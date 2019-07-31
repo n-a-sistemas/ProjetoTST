@@ -65,16 +65,19 @@
             this.Telefone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pntelefone = new System.Windows.Forms.Panel();
+            this.mskTel = new System.Windows.Forms.MaskedTextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.txttel = new System.Windows.Forms.TextBox();
             this.cmbTipo = new System.Windows.Forms.ComboBox();
+            this.txttel = new System.Windows.Forms.TextBox();
             this.btnremover = new System.Windows.Forms.Button();
-            this.txtCpf = new System.Windows.Forms.TextBox();
-            this.txtcep = new System.Windows.Forms.TextBox();
             this.dgvEpi = new System.Windows.Forms.DataGridView();
-            this.txtdata = new System.Windows.Forms.TextBox();
+            this.mskcpf = new System.Windows.Forms.MaskedTextBox();
+            this.msknascimento = new System.Windows.Forms.MaskedTextBox();
+            this.mskCEP = new System.Windows.Forms.MaskedTextBox();
+            this.mskteste = new System.Windows.Forms.MaskedTextBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTelefone)).BeginInit();
@@ -414,16 +417,24 @@
             // 
             // pntelefone
             // 
+            this.pntelefone.Controls.Add(this.mskTel);
             this.pntelefone.Controls.Add(this.button2);
             this.pntelefone.Controls.Add(this.label14);
             this.pntelefone.Controls.Add(this.label11);
-            this.pntelefone.Controls.Add(this.txttel);
             this.pntelefone.Controls.Add(this.cmbTipo);
             this.pntelefone.Location = new System.Drawing.Point(6, 224);
             this.pntelefone.Name = "pntelefone";
             this.pntelefone.Size = new System.Drawing.Size(246, 107);
             this.pntelefone.TabIndex = 42;
             this.pntelefone.Visible = false;
+            // 
+            // mskTel
+            // 
+            this.mskTel.Location = new System.Drawing.Point(79, 49);
+            this.mskTel.Name = "mskTel";
+            this.mskTel.Size = new System.Drawing.Size(100, 20);
+            this.mskTel.TabIndex = 52;
+            this.mskTel.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // button2
             // 
@@ -453,13 +464,6 @@
             this.label11.TabIndex = 2;
             this.label11.Text = "Tipo:";
             // 
-            // txttel
-            // 
-            this.txttel.Location = new System.Drawing.Point(76, 48);
-            this.txttel.Name = "txttel";
-            this.txttel.Size = new System.Drawing.Size(121, 20);
-            this.txttel.TabIndex = 1;
-            // 
             // cmbTipo
             // 
             this.cmbTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -474,6 +478,14 @@
             this.cmbTipo.Name = "cmbTipo";
             this.cmbTipo.Size = new System.Drawing.Size(121, 21);
             this.cmbTipo.TabIndex = 0;
+            this.cmbTipo.SelectedIndexChanged += new System.EventHandler(this.cmbTipo_SelectedIndexChanged);
+            // 
+            // txttel
+            // 
+            this.txttel.Location = new System.Drawing.Point(203, 371);
+            this.txttel.Name = "txttel";
+            this.txttel.Size = new System.Drawing.Size(121, 20);
+            this.txttel.TabIndex = 1;
             // 
             // btnremover
             // 
@@ -484,20 +496,6 @@
             this.btnremover.Text = "-";
             this.btnremover.UseVisualStyleBackColor = true;
             this.btnremover.Click += new System.EventHandler(this.btnremover_Click);
-            // 
-            // txtCpf
-            // 
-            this.txtCpf.Location = new System.Drawing.Point(4, 114);
-            this.txtCpf.Name = "txtCpf";
-            this.txtCpf.Size = new System.Drawing.Size(113, 20);
-            this.txtCpf.TabIndex = 43;
-            // 
-            // txtcep
-            // 
-            this.txtcep.Location = new System.Drawing.Point(261, 114);
-            this.txtcep.Name = "txtcep";
-            this.txtcep.Size = new System.Drawing.Size(113, 20);
-            this.txtcep.TabIndex = 44;
             // 
             // dgvEpi
             // 
@@ -510,12 +508,50 @@
             this.dgvEpi.Size = new System.Drawing.Size(185, 150);
             this.dgvEpi.TabIndex = 45;
             // 
-            // txtdata
+            // mskcpf
             // 
-            this.txtdata.Location = new System.Drawing.Point(133, 114);
-            this.txtdata.Name = "txtdata";
-            this.txtdata.Size = new System.Drawing.Size(113, 20);
-            this.txtdata.TabIndex = 46;
+            this.mskcpf.Location = new System.Drawing.Point(5, 114);
+            this.mskcpf.Mask = "000.000.000-00";
+            this.mskcpf.Name = "mskcpf";
+            this.mskcpf.Size = new System.Drawing.Size(100, 20);
+            this.mskcpf.TabIndex = 47;
+            this.mskcpf.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            // 
+            // msknascimento
+            // 
+            this.msknascimento.Location = new System.Drawing.Point(133, 116);
+            this.msknascimento.Mask = "00/00/0000";
+            this.msknascimento.Name = "msknascimento";
+            this.msknascimento.Size = new System.Drawing.Size(100, 20);
+            this.msknascimento.TabIndex = 48;
+            this.msknascimento.ValidatingType = typeof(System.DateTime);
+            // 
+            // mskCEP
+            // 
+            this.mskCEP.Location = new System.Drawing.Point(261, 114);
+            this.mskCEP.Mask = "00000-999";
+            this.mskCEP.Name = "mskCEP";
+            this.mskCEP.Size = new System.Drawing.Size(100, 20);
+            this.mskCEP.TabIndex = 49;
+            // 
+            // mskteste
+            // 
+            this.mskteste.Location = new System.Drawing.Point(330, 371);
+            this.mskteste.Mask = "(00)00000-0000";
+            this.mskteste.Name = "mskteste";
+            this.mskteste.Size = new System.Drawing.Size(100, 20);
+            this.mskteste.TabIndex = 50;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Celular",
+            "Telefone"});
+            this.comboBox1.Location = new System.Drawing.Point(321, 339);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 51;
             // 
             // Cadastro
             // 
@@ -523,10 +559,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.ClientSize = new System.Drawing.Size(728, 450);
-            this.Controls.Add(this.txtdata);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.mskteste);
+            this.Controls.Add(this.txttel);
+            this.Controls.Add(this.mskCEP);
+            this.Controls.Add(this.msknascimento);
+            this.Controls.Add(this.mskcpf);
             this.Controls.Add(this.dgvEpi);
-            this.Controls.Add(this.txtcep);
-            this.Controls.Add(this.txtCpf);
             this.Controls.Add(this.btnremover);
             this.Controls.Add(this.pntelefone);
             this.Controls.Add(this.btnTelefone);
@@ -621,11 +660,14 @@
         private System.Windows.Forms.ComboBox cmbTipo;
         private System.Windows.Forms.Button btnremover;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox txtCpf;
-        private System.Windows.Forms.TextBox txtcep;
         private System.Windows.Forms.DataGridView dgvEpi;
-        private System.Windows.Forms.TextBox txtdata;
         private System.Windows.Forms.DataGridViewTextBoxColumn Telefone;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
+        private System.Windows.Forms.MaskedTextBox mskcpf;
+        private System.Windows.Forms.MaskedTextBox msknascimento;
+        private System.Windows.Forms.MaskedTextBox mskCEP;
+        private System.Windows.Forms.MaskedTextBox mskteste;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.MaskedTextBox mskTel;
     }
 }
