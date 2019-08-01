@@ -70,14 +70,11 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.cmbTipo = new System.Windows.Forms.ComboBox();
-            this.txttel = new System.Windows.Forms.TextBox();
             this.btnremover = new System.Windows.Forms.Button();
             this.dgvEpi = new System.Windows.Forms.DataGridView();
             this.mskcpf = new System.Windows.Forms.MaskedTextBox();
             this.msknascimento = new System.Windows.Forms.MaskedTextBox();
             this.mskCEP = new System.Windows.Forms.MaskedTextBox();
-            this.mskteste = new System.Windows.Forms.MaskedTextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTelefone)).BeginInit();
@@ -480,13 +477,6 @@
             this.cmbTipo.TabIndex = 0;
             this.cmbTipo.SelectedIndexChanged += new System.EventHandler(this.cmbTipo_SelectedIndexChanged);
             // 
-            // txttel
-            // 
-            this.txttel.Location = new System.Drawing.Point(203, 371);
-            this.txttel.Name = "txttel";
-            this.txttel.Size = new System.Drawing.Size(121, 20);
-            this.txttel.TabIndex = 1;
-            // 
             // btnremover
             // 
             this.btnremover.Location = new System.Drawing.Point(261, 277);
@@ -534,34 +524,12 @@
             this.mskCEP.Size = new System.Drawing.Size(100, 20);
             this.mskCEP.TabIndex = 49;
             // 
-            // mskteste
-            // 
-            this.mskteste.Location = new System.Drawing.Point(330, 371);
-            this.mskteste.Mask = "(00)00000-0000";
-            this.mskteste.Name = "mskteste";
-            this.mskteste.Size = new System.Drawing.Size(100, 20);
-            this.mskteste.TabIndex = 50;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Celular",
-            "Telefone"});
-            this.comboBox1.Location = new System.Drawing.Point(321, 339);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 51;
-            // 
             // Cadastro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.ClientSize = new System.Drawing.Size(728, 450);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.mskteste);
-            this.Controls.Add(this.txttel);
             this.Controls.Add(this.mskCEP);
             this.Controls.Add(this.msknascimento);
             this.Controls.Add(this.mskcpf);
@@ -656,7 +624,6 @@
         private System.Windows.Forms.Panel pntelefone;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox txttel;
         private System.Windows.Forms.ComboBox cmbTipo;
         private System.Windows.Forms.Button btnremover;
         private System.Windows.Forms.Button button2;
@@ -666,8 +633,6 @@
         private System.Windows.Forms.MaskedTextBox mskcpf;
         private System.Windows.Forms.MaskedTextBox msknascimento;
         private System.Windows.Forms.MaskedTextBox mskCEP;
-        private System.Windows.Forms.MaskedTextBox mskteste;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.MaskedTextBox mskTel;
     }
 }
