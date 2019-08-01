@@ -255,8 +255,8 @@ namespace ProjetoTStTeste
             try
             {
                 BD._sql = "SELECT F.id_funcionario AS 'ID', F.nome_funcionario AS 'NOME', F.cpf_funcionario AS 'CPF',F.data_nascimento AS 'NASCIMENTO',  " +
-                            " F.endereco_funcionario AS 'ENDEREÇO', F.email_funcionario AS 'Email' ,CID.CIDADE AS 'Cidade', E.SIGLA as 'UF', F.id_profissao, P.cargo_profissao as 'Profissão',  " + 
-                            "  F.sexo, F.bairro_funcionario, F.cep_funcionario, f.ID_CIDADE, F.ID_ESTADO, F.exame, F.id_turno, T.Periodo AS 'Turno'  " +
+                            " F.endereco_funcionario AS 'ENDEREÇO', F.email_funcionario AS 'EMAIL' ,CID.CIDADE AS 'CIDADE', E.SIGLA as 'UF', F.id_profissao, P.cargo_profissao as 'PROFISSÃO',  " + 
+                            "  F.sexo AS 'SEXO', F.bairro_funcionario AS 'BAIRRO', F.cep_funcionario AS 'CEP', f.ID_CIDADE, F.ID_ESTADO, F.exame AS 'EXAME', F.id_turno, T.Periodo AS 'TURNO'  " +
                         " FROM funcionario F  " +
                             "  LEFT JOIN ESTADOS E ON F.ID_ESTADO = E.ID_ESTADO  " +
                             "  LEFT JOIN CIDADES CID ON F.ID_CIDADE = CID.ID_CIDADE  " +

@@ -172,11 +172,19 @@ namespace ProjetoTStTeste
             {
                 pntelefone.Visible = false;
                 DataGridViewRow row = (DataGridViewRow)dgvTelefone.Rows[0].Clone();
-                row.Cells[0].Value = mskTel.Text;
-                row.Cells[1].Value = cmbTipo.Text;
-                dgvTelefone.Rows.Add(row);
-                mskTel.Text = "";
-                cmbTipo.SelectedValue = 0;
+                if (mskTel.Text != "")
+                {
+                    row.Cells[0].Value = mskTel.Text;
+                    row.Cells[1].Value = cmbTipo.Text;
+                    dgvTelefone.Rows.Add(row);
+                    mskTel.Text = "";
+                    cmbTipo.SelectedValue = 0;
+                }
+                else
+                {
+                    MessageBox.Show("coloque um numero", "Sem Numero", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
 
 
             }
@@ -256,13 +264,7 @@ namespace ProjetoTStTeste
                     rdbPendente.Checked = true;
                 }
                 
-                    
-
-                
-               
-                
-
-
+             
                 if (txtId.Text != "")
                 {
                    
@@ -351,11 +353,19 @@ namespace ProjetoTStTeste
         {
             DataGridViewSelectedRowCollection linha = dgvTelefone.SelectedRows;
 
-          
-            Telefones tel = new Telefones();
-            tel.Telefone = Convert.ToInt32(linha[0].Cells[4].Value);
-            tel.Deletartel2();
-            dgvTelefone.Rows.Remove(dgvTelefone.CurrentRow);
+            Pessoa pes = new Pessoa();
+
+            if (txtId.Text != "")
+            {
+                Telefones tel = new Telefones();
+                tel.Telefone = Convert.ToInt32(linha[0].Cells[4].Value);
+                tel.Deletartel2();
+                dgvTelefone.Rows.Remove(dgvTelefone.CurrentRow);
+            }
+            else
+            {
+                dgvTelefone.Rows.Remove(dgvTelefone.CurrentRow);
+            }
             
         }
 
@@ -390,5 +400,7 @@ namespace ProjetoTStTeste
 
             }
         }
+
+       
     }
 }

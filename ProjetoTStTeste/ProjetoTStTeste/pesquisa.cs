@@ -123,11 +123,18 @@ namespace ProjetoTStTeste
                 }
                 else
                 {
-                    Pessoa delete_funcionario = new Pessoa();
-                    delete_funcionario.Id_Funcionario = Convert.ToInt32(linha_selecionada[0].Cells[0].Value.ToString());
-                    delete_funcionario.Deletartel();
-                    delete_funcionario.Deletar();
-                    txtpesquisa_TextChanged(sender, e);
+                    DialogResult resultado = MessageBox.Show("Você tem certeza que quer deletar o Funcionario", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if ( resultado == DialogResult.Yes)
+
+                    {
+                        Pessoa delete_funcionario = new Pessoa();
+                        delete_funcionario.Id_Funcionario = Convert.ToInt32(linha_selecionada[0].Cells[0].Value.ToString());
+                        delete_funcionario.Deletartel();
+                        delete_funcionario.Deletar();
+                        txtpesquisa_TextChanged(sender, e);
+                    }
+                   
                 }
             }
         }

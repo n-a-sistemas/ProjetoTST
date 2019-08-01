@@ -75,7 +75,7 @@
             // 
             // btsair
             // 
-            this.btsair.Location = new System.Drawing.Point(290, 415);
+            this.btsair.Location = new System.Drawing.Point(434, 415);
             this.btsair.Name = "btsair";
             this.btsair.Size = new System.Drawing.Size(138, 23);
             this.btsair.TabIndex = 3;
@@ -119,7 +119,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(434, 415);
+            this.button1.Location = new System.Drawing.Point(91, 415);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(138, 23);
             this.button1.TabIndex = 7;
