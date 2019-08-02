@@ -182,7 +182,7 @@ namespace ProjetoTStTeste
                 }
                 else
                 {
-                    MessageBox.Show("coloque um numero", "Sem Numero", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Adicione um número", "Sem número", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 
 
@@ -401,6 +401,5 @@ namespace ProjetoTStTeste
             }
         }
 
-       
     }
 }

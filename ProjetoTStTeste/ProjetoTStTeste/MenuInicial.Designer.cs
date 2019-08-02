@@ -43,7 +43,7 @@
             this.adicionarPessoaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(972, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(954, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -53,13 +53,13 @@
             this.adicionarFuncionarioToolStripMenuItem,
             this.pesquisarToolStripMenuItem,
             this.sairToolStripMenuItem});
-            this.adicionarPessoaToolStripMenuItem.Image = global::ProjetoTStTeste.Properties.Resources.kappa;
             this.adicionarPessoaToolStripMenuItem.Name = "adicionarPessoaToolStripMenuItem";
-            this.adicionarPessoaToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
+            this.adicionarPessoaToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.adicionarPessoaToolStripMenuItem.Text = "Menu";
             // 
             // adicionarFuncionarioToolStripMenuItem
             // 
+            this.adicionarFuncionarioToolStripMenuItem.Image = global::ProjetoTStTeste.Properties.Resources.Add_User_icon;
             this.adicionarFuncionarioToolStripMenuItem.Name = "adicionarFuncionarioToolStripMenuItem";
             this.adicionarFuncionarioToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.adicionarFuncionarioToolStripMenuItem.Text = "Cadastrar Funcionário";
@@ -67,6 +67,7 @@
             // 
             // pesquisarToolStripMenuItem
             // 
+            this.pesquisarToolStripMenuItem.Image = global::ProjetoTStTeste.Properties.Resources.Search_icon;
             this.pesquisarToolStripMenuItem.Name = "pesquisarToolStripMenuItem";
             this.pesquisarToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.pesquisarToolStripMenuItem.Text = "Pesquisar";
@@ -74,6 +75,7 @@
             // 
             // sairToolStripMenuItem
             // 
+            this.sairToolStripMenuItem.Image = global::ProjetoTStTeste.Properties.Resources.Close_icon;
             this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
             this.sairToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.sairToolStripMenuItem.Text = "Sair";
@@ -86,13 +88,11 @@
             this.BackColor = System.Drawing.SystemColors.Menu;
             this.BackgroundImage = global::ProjetoTStTeste.Properties.Resources.segtrabalho;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(972, 567);
+            this.ClientSize = new System.Drawing.Size(954, 621);
             this.Controls.Add(this.menuStrip1);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "MenuInicial";
             this.Text = "Menu Principal";
             this.TransparencyKey = System.Drawing.Color.White;

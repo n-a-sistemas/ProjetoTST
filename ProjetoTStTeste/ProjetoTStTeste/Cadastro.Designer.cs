@@ -102,7 +102,7 @@
             // 
             // txtNome
             // 
-            this.txtNome.Location = new System.Drawing.Point(4, 65);
+            this.txtNome.Location = new System.Drawing.Point(5, 65);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(219, 20);
             this.txtNome.TabIndex = 2;
@@ -427,9 +427,9 @@
             // 
             // mskTel
             // 
-            this.mskTel.Location = new System.Drawing.Point(79, 49);
+            this.mskTel.Location = new System.Drawing.Point(76, 49);
             this.mskTel.Name = "mskTel";
-            this.mskTel.Size = new System.Drawing.Size(100, 20);
+            this.mskTel.Size = new System.Drawing.Size(121, 20);
             this.mskTel.TabIndex = 52;
             this.mskTel.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
@@ -446,7 +446,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(21, 51);
+            this.label14.Location = new System.Drawing.Point(15, 52);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(52, 13);
             this.label14.TabIndex = 3;
@@ -463,6 +463,7 @@
             // 
             // cmbTipo
             // 
+            this.cmbTipo.BackColor = System.Drawing.SystemColors.Window;
             this.cmbTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTipo.FormattingEnabled = true;
             this.cmbTipo.Items.AddRange(new object[] {
@@ -491,6 +492,7 @@
             // 
             this.dgvEpi.AllowUserToAddRows = false;
             this.dgvEpi.AllowUserToDeleteRows = false;
+            this.dgvEpi.BackgroundColor = System.Drawing.Color.White;
             this.dgvEpi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEpi.Location = new System.Drawing.Point(509, 210);
             this.dgvEpi.Name = "dgvEpi";
@@ -518,6 +520,7 @@
             // 
             // mskCEP
             // 
+            this.mskCEP.BeepOnError = true;
             this.mskCEP.Location = new System.Drawing.Point(261, 114);
             this.mskCEP.Mask = "00000-999";
             this.mskCEP.Name = "mskCEP";
