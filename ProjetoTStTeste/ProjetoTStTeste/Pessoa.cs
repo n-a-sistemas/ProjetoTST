@@ -71,7 +71,7 @@ namespace ProjetoTStTeste
             set { bairro = value; }
         }
 
-        
+
 
         public int Id_Cidade
         {
@@ -123,7 +123,7 @@ namespace ProjetoTStTeste
             {
                 BD._sql = String.Format(new CultureInfo("en-US"), " INSERT INTO funcionario (nome_funcionario,id_profissao,id_estado,id_cidade,endereco_funcionario,cpf_funcionario ,cep_funcionario,bairro_funcionario,id_turno,email_funcionario,data_nascimento,sexo,exame  ) " +
                                         " values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}'  )",
-                                                  nome,id_Profissao,id_Estado, id_Cidade,endereco,cpf,cep,bairro,id_turno,email,dt_Nascimento.ToShortDateString(),Sexo, Exame) +
+                                                  nome, id_Profissao, id_Estado, id_Cidade, endereco, cpf, cep, bairro, id_turno, email, dt_Nascimento.ToShortDateString(), Sexo, Exame) +
                                                   "; SELECT SCOPE_IDENTITY();";
 
                 BD.ExecutaComando(false, out id);
@@ -255,14 +255,14 @@ namespace ProjetoTStTeste
             try
             {
                 BD._sql = "SELECT F.id_funcionario AS 'ID', F.nome_funcionario AS 'NOME', F.cpf_funcionario AS 'CPF',F.data_nascimento AS 'NASCIMENTO',  " +
-                            " F.endereco_funcionario AS 'ENDEREÇO', F.email_funcionario AS 'EMAIL' ,CID.CIDADE AS 'CIDADE', E.SIGLA as 'UF', F.id_profissao, P.cargo_profissao as 'PROFISSÃO',  " + 
+                            " F.endereco_funcionario AS 'ENDEREÇO', F.email_funcionario AS 'EMAIL' ,CID.CIDADE AS 'CIDADE', E.SIGLA as 'UF', F.id_profissao, P.cargo_profissao as 'PROFISSÃO',  " +
                             "  F.sexo AS 'SEXO', F.bairro_funcionario AS 'BAIRRO', F.cep_funcionario AS 'CEP', f.ID_CIDADE, F.ID_ESTADO, F.exame AS 'EXAME', F.id_turno, T.Periodo AS 'TURNO'  " +
                         " FROM funcionario F  " +
                             "  LEFT JOIN ESTADOS E ON F.ID_ESTADO = E.ID_ESTADO  " +
                             "  LEFT JOIN CIDADES CID ON F.ID_CIDADE = CID.ID_CIDADE  " +
                             " LEFT JOIN profissao P ON F.id_profissao = P.id_profissao " +
                             "  LEFT JOIN turno T ON f.id_turno = t.id_turno  " +
-                        "  WHERE F.nome_funcionario LIKE '%" + nome_pesquisa + "%'";
+                        "  WHERE F.cpf_funcionario LIKE '" + nome_pesquisa + "'" + "OR F.nome_funcionario LIKE '%" + nome_pesquisa + "%'";
 
                 return BD.ExecutaSelect();
             }
@@ -328,7 +328,7 @@ namespace ProjetoTStTeste
 
                 exOK = BD.ExecutaComando(false);
 
-                if (exOK < 0) 
+                if (exOK < 0)
                 {
                     MessageBox.Show("Erro ao atualizar funcionário", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -378,7 +378,7 @@ namespace ProjetoTStTeste
 
                 exOK = BD.ExecutaComando(false);
 
-               
+
             }
 
             catch (Exception ex)
@@ -404,8 +404,30 @@ namespace ProjetoTStTeste
 
             return null;
         }
-       
+        public DataTable PesquisaPorCPF(String cpf_pesquisa)
+        {
+            try
+            {
+                BD._sql = "SELECT F.id_funcionario AS 'ID', F.nome_funcionario AS 'NOME', F.cpf_funcionario AS 'CPF',F.data_nascimento AS 'NASCIMENTO',  " +
+                            " F.endereco_funcionario AS 'ENDEREÇO', F.email_funcionario AS 'EMAIL' ,CID.CIDADE AS 'CIDADE', E.SIGLA as 'UF', F.id_profissao, P.cargo_profissao as 'PROFISSÃO',  " +
+                            "  F.sexo AS 'SEXO', F.bairro_funcionario AS 'BAIRRO', F.cep_funcionario AS 'CEP', f.ID_CIDADE, F.ID_ESTADO, F.exame AS 'EXAME', F.id_turno, T.Periodo AS 'TURNO'  " +
+                        " FROM funcionario F  " +
+                            "  LEFT JOIN ESTADOS E ON F.ID_ESTADO = E.ID_ESTADO  " +
+                            "  LEFT JOIN CIDADES CID ON F.ID_CIDADE = CID.ID_CIDADE  " +
+                            " LEFT JOIN profissao P ON F.id_profissao = P.id_profissao " +
+                            "  LEFT JOIN turno T ON f.id_turno = t.id_turno  " +
+                        "  WHERE F.cpf_funcionario LIKE '" + cpf_pesquisa + "'";
+
+                return BD.ExecutaSelect();
+            }
+            catch (Exception)
+            {
+            }
+
+            return null;
 
 
+
+        }
     }
 }
