@@ -120,7 +120,6 @@
             this.dgvexame.ReadOnly = true;
             this.dgvexame.Size = new System.Drawing.Size(279, 150);
             this.dgvexame.TabIndex = 6;
-            this.dgvexame.Visible = false;
             this.dgvexame.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvexame_CellContentClick);
             // 
             // button1

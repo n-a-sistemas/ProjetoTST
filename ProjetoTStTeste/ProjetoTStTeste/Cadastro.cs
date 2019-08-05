@@ -357,14 +357,22 @@ namespace ProjetoTStTeste
 
             if (txtId.Text != "")
             {
-                Telefones tel = new Telefones();
+                if (dgvTelefone.CurrentRow != null)
+                { 
+                    Telefones tel = new Telefones();
                 tel.Telefone = Convert.ToInt32(linha[0].Cells[4].Value);
                 tel.Deletartel2();
                 dgvTelefone.Rows.Remove(dgvTelefone.CurrentRow);
+                }
+                
             }
             else
             {
-                dgvTelefone.Rows.Remove(dgvTelefone.CurrentRow);
+                if (dgvTelefone.CurrentRow != null)
+                {
+                    dgvTelefone.Rows.Remove(dgvTelefone.CurrentRow);
+                }
+            
             }
             
         }
