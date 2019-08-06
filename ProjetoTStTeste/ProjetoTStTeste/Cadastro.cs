@@ -357,7 +357,7 @@ namespace ProjetoTStTeste
 
             if (txtId.Text != "")
             {
-                if (dgvTelefone.CurrentRow != null)
+                if (linha.Count != 0)
                 { 
                     Telefones tel = new Telefones();
                 tel.Telefone = Convert.ToInt32(linha[0].Cells[4].Value);
@@ -368,11 +368,16 @@ namespace ProjetoTStTeste
             }
             else
             {
-                if (dgvTelefone.CurrentRow != null)
+                if ( (linha.Count != 0) && (linha[0].Cells[0].Value != null) )
                 {
                     dgvTelefone.Rows.Remove(dgvTelefone.CurrentRow);
+                    
                 }
-            
+                else
+                {
+                    MessageBox.Show("Não contem Telefone", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
             }
             
         }

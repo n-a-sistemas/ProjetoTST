@@ -32,7 +32,7 @@ namespace ProjetoTStTeste
 
         private void pesquisaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
 
         private void sairToolStripMenuItem_Click(object sender, EventArgs e)
@@ -45,6 +45,8 @@ namespace ProjetoTStTeste
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            frmlogin formulario = new frmlogin();
+            formulario.ShowDialog();
 
         }
     }

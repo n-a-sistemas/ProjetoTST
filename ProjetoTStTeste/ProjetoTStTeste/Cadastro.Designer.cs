@@ -419,7 +419,7 @@
             this.pntelefone.Controls.Add(this.label14);
             this.pntelefone.Controls.Add(this.label11);
             this.pntelefone.Controls.Add(this.cmbTipo);
-            this.pntelefone.Location = new System.Drawing.Point(6, 224);
+            this.pntelefone.Location = new System.Drawing.Point(9, 227);
             this.pntelefone.Name = "pntelefone";
             this.pntelefone.Size = new System.Drawing.Size(246, 107);
             this.pntelefone.TabIndex = 42;
