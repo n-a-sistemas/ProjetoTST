@@ -155,7 +155,7 @@ namespace ProjetoTStTeste
         {
             profissao pro = new profissao();
             pro.IdProfissao = Convert.ToInt32(cmbCargo.SelectedValue);
-            //Mapeia a origen dos dados, pegando o retorno do PesquisaPorNome, que será um Datatable
+            //Mapeia a origem dos dados, pegando o retorno do PesquisaPorNome, que será um Datatable
             dgvEpi.DataSource = pro.PesquisaPorprofissao();
             dgvEpi.AutoResizeColumns();
 
