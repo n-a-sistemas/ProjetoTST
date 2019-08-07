@@ -65,6 +65,7 @@ namespace ProjetoTStTeste
 
         private void btnalterar_Click(object sender, EventArgs e)
         {
+
             DataGridViewSelectedRowCollection linha = dgvpesquisa.SelectedRows;
             
 
@@ -88,7 +89,7 @@ namespace ProjetoTStTeste
             pes.Id_Turno = Convert.ToInt32(linha[0].Cells[16].Value);
             pes.Exame = Convert.ToByte(linha[0].Cells[15].Value);
 
-            
+
 
 
 

@@ -28,6 +28,7 @@ namespace ProjetoTStTeste
 
                 Pessoa pes = new Pessoa();
 
+                pes.Status = 1;
                 pes.Nome = txtNome.Text;
                 pes.Email = txtEmail.Text;
                 pes.Cpf = mskcpf.Text;

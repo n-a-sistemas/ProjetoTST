@@ -25,8 +25,18 @@ namespace ProjetoTStTeste
         private int id_Profissao;
         private String sexo;
         private byte exame;
+        private byte status;
 
         conectaBD BD = new conectaBD();
+
+        
+
+        public byte Status
+        {
+            get { return status; }
+            set { status = value; }
+        }
+
 
         public int Id_Funcionario
         {
@@ -121,9 +131,9 @@ namespace ProjetoTStTeste
             int id = 0;
             try
             {
-                BD._sql = String.Format(new CultureInfo("en-US"), " INSERT INTO funcionario (nome_funcionario,id_profissao,id_estado,id_cidade,endereco_funcionario,cpf_funcionario ,cep_funcionario,bairro_funcionario,id_turno,email_funcionario,data_nascimento,sexo,exame  ) " +
-                                        " values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}'  )",
-                                                  nome, id_Profissao, id_Estado, id_Cidade, endereco, cpf, cep, bairro, id_turno, email, dt_Nascimento.ToShortDateString(), Sexo, Exame) +
+                BD._sql = String.Format(new CultureInfo("en-US"), " INSERT INTO funcionario (nome_funcionario,id_profissao,id_estado,id_cidade,endereco_funcionario,cpf_funcionario ,cep_funcionario,bairro_funcionario,id_turno,email_funcionario,data_nascimento,sexo,exame,status_fun  ) " +
+                                        " values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}'  )",
+                                                  nome, id_Profissao, id_Estado, id_Cidade, endereco, cpf, cep, bairro, id_turno, email, dt_Nascimento.ToShortDateString(), Sexo, Exame, status) +
                                                   "; SELECT SCOPE_IDENTITY();";
 
                 BD.ExecutaComando(false, out id);
@@ -262,7 +272,7 @@ namespace ProjetoTStTeste
                             "  LEFT JOIN CIDADES CID ON F.ID_CIDADE = CID.ID_CIDADE  " +
                             " LEFT JOIN profissao P ON F.id_profissao = P.id_profissao " +
                             "  LEFT JOIN turno T ON f.id_turno = t.id_turno  " +
-                        "  WHERE F.cpf_funcionario LIKE '" + nome_pesquisa + "'" + "OR F.nome_funcionario LIKE '%" + nome_pesquisa + "%'";
+                        "  WHERE F.cpf_funcionario LIKE '" + nome_pesquisa + "'" + "OR F.nome_funcionario LIKE '%" + nome_pesquisa + "%' And  f.status_fun = 1  ";
 
                 return BD.ExecutaSelect();
             }
@@ -349,7 +359,7 @@ namespace ProjetoTStTeste
             try
             {
                 int exOK = 0;
-                BD._sql = String.Format("DELETE FROM funcionario WHERE id_funcionario = {0}", id_Funcionario);
+                BD._sql = String.Format("UPDATE funcionario SET status_fun = 1 WHERE id_funcionario = {0}", id_Funcionario);
 
                 exOK = BD.ExecutaComando(false);
 
