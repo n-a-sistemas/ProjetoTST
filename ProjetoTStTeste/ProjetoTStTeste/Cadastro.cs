@@ -159,6 +159,15 @@ namespace ProjetoTStTeste
             dgvEpi.DataSource = pro.PesquisaPorprofissao();
             dgvEpi.AutoResizeColumns();
 
+            CadastrarUsuario Usuario = new CadastrarUsuario();
+
+            if (pro.IdProfissao != null)
+            {
+                if (pro.IdProfissao == 6)
+                {
+                    Usuario.ShowDialog();
+                }
+            }
 
         }
         
@@ -413,6 +422,8 @@ namespace ProjetoTStTeste
                 mskTel.Mask = "(00)0000-0000";
 
             }
+
+            
         }
 
     }

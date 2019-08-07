@@ -38,7 +38,7 @@
             // 
             // cmblogin
             // 
-            this.cmblogin.FormattingEnabled = true;
+            this.cmblogin.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmblogin.Location = new System.Drawing.Point(112, 51);
             this.cmblogin.Name = "cmblogin";
             this.cmblogin.Size = new System.Drawing.Size(121, 21);

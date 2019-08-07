@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CadastrarUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CadastrarUsuario.Designer.cs">
+      <DependentUpon>CadastrarUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Cl_Login.cs" />
     <Compile Include="conectaBD.cs" />
     <Compile Include="frmlogin.cs">
@@ -77,6 +83,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Telefones.cs" />
+    <EmbeddedResource Include="CadastrarUsuario.resx">
+      <DependentUpon>CadastrarUsuario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmlogin.resx">
       <DependentUpon>frmlogin.cs</DependentUpon>
     </EmbeddedResource>
