@@ -21,6 +21,14 @@ namespace ProjetoTStTeste
             
         }
 
+        internal int adm
+        {
+            set
+            {
+                adm = value;
+            }
+        }
+
         private void adicionarFuncionarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Cadastro addPro = new Cadastro();
@@ -48,6 +56,14 @@ namespace ProjetoTStTeste
             frmlogin formulario = new frmlogin();
             formulario.ShowDialog();
 
+        }
+
+        private void MenuInicial_Shown(object sender, EventArgs e)
+        {
+            if (txtAdm.Text == "True")
+            {
+                adicionarFuncionarioToolStripMenuItem.Enabled = true;
+            }
         }
     }
 }

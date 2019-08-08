@@ -18,15 +18,23 @@ namespace ProjetoTStTeste
         }
 
         bool senhaok;
+
+  
         
         private void button1_Click(object sender, EventArgs e)
         {
-            Cl_Login usuario = new Cl_Login();
-            usuario.id_login = Convert.ToInt32(cmblogin.SelectedValue);
+            Pessoa pes = new Pessoa();
+            pes.Id_Funcionario = Convert.ToInt32(cmblogin.SelectedValue);
 
-            DataTable dt = usuario.buscasenha();
+            DataTable dt = pes.buscasenha();
+
+            
+
             if(txtSenha.Text == dt.Rows[0]["senha"].ToString())
             {
+                TextBox txt = (TextBox)Application.OpenForms["MenuInicial"].Controls["txtAdm"];
+                txt.Text = dt.Rows[0]["administrador"].ToString();
+
                 senhaok = true;
                 this.Close();
 
@@ -49,10 +57,10 @@ namespace ProjetoTStTeste
 
         private void frmlogin_Load(object sender, EventArgs e)
         {
-            Cl_Login usuario = new Cl_Login();
-            cmblogin.DisplayMember = "Login";
-            cmblogin.ValueMember = "id_login";
-            cmblogin.DataSource = usuario.ListaLogin();
+            Pessoa pes = new Pessoa();
+            cmblogin.DisplayMember = "usuario";
+            cmblogin.ValueMember = "id_funcionario";
+            cmblogin.DataSource = pes.ListaLogin();
             cmblogin.SelectedValue = 0;
             senhaok = false;
         }

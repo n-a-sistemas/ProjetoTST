@@ -26,6 +26,9 @@ namespace ProjetoTStTeste
         private String sexo;
         private byte exame;
         private byte status;
+        private string senha;
+        private string usuario;
+        private byte administrador;
 
         conectaBD BD = new conectaBD();
 
@@ -124,6 +127,24 @@ namespace ProjetoTStTeste
             set { exame = value; }
         }
 
+        public string Usuario
+        {
+            get { return usuario;  }
+            set { usuario = value; }
+        }
+
+        public string Senha
+        {
+            get { return senha; }
+            set { senha = value; }
+        }
+
+        public byte Administrador
+        {
+            get { return administrador; }
+            set { administrador = value; }
+        }
+
 
 
         public int Adicionar()
@@ -131,9 +152,9 @@ namespace ProjetoTStTeste
             int id = 0;
             try
             {
-                BD._sql = String.Format(new CultureInfo("en-US"), " INSERT INTO funcionario (nome_funcionario,id_profissao,id_estado,id_cidade,endereco_funcionario,cpf_funcionario ,cep_funcionario,bairro_funcionario,id_turno,email_funcionario,data_nascimento,sexo,exame,status_fun  ) " +
-                                        " values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}'  )",
-                                                  nome, id_Profissao, id_Estado, id_Cidade, endereco, cpf, cep, bairro, id_turno, email, dt_Nascimento.ToShortDateString(), Sexo, Exame, status) +
+                BD._sql = String.Format(new CultureInfo("en-US"), " INSERT INTO funcionario (nome_funcionario,id_profissao,id_estado,id_cidade,endereco_funcionario,cpf_funcionario ,cep_funcionario,bairro_funcionario,id_turno,email_funcionario,data_nascimento,sexo,exame,status_fun,usuario,senha,administrador  ) " +
+                                        " values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}','{15}','{16}'  )",
+                                                  nome, id_Profissao, id_Estado, id_Cidade, endereco, cpf, cep, bairro, id_turno, email, dt_Nascimento.ToShortDateString(), Sexo, Exame, status, usuario, senha,administrador ) +
                                                   "; SELECT SCOPE_IDENTITY();";
 
                 BD.ExecutaComando(false, out id);
@@ -439,5 +460,37 @@ namespace ProjetoTStTeste
 
 
         }
+        public DataTable ListaLogin()
+        {
+
+            try
+            {
+                BD._sql = "SELECT id_funcionario, usuario FROM funcionario order by id_funcionario";
+
+                return BD.ExecutaSelect();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+
+
+        }
+        public DataTable buscasenha()
+        {
+            try
+            {
+                BD._sql = " SELECT senha, administrador FROM funcionario  " +
+                    "  where id_funcionario =  " + id_Funcionario.ToString();
+
+                return BD.ExecutaSelect();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+
+        }
+
     }
 }

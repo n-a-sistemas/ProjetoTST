@@ -75,11 +75,17 @@
             this.mskcpf = new System.Windows.Forms.MaskedTextBox();
             this.msknascimento = new System.Windows.Forms.MaskedTextBox();
             this.mskCEP = new System.Windows.Forms.MaskedTextBox();
+            this.grblogin = new System.Windows.Forms.GroupBox();
+            this.txtusuario = new System.Windows.Forms.TextBox();
+            this.txtsenha = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTelefone)).BeginInit();
             this.pntelefone.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEpi)).BeginInit();
+            this.grblogin.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -267,7 +273,7 @@
             // 
             this.cmbCargo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCargo.FormattingEnabled = true;
-            this.cmbCargo.Location = new System.Drawing.Point(346, 252);
+            this.cmbCargo.Location = new System.Drawing.Point(346, 227);
             this.cmbCargo.Name = "cmbCargo";
             this.cmbCargo.Size = new System.Drawing.Size(144, 21);
             this.cmbCargo.TabIndex = 23;
@@ -276,7 +282,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(343, 236);
+            this.label12.Location = new System.Drawing.Point(343, 210);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(53, 13);
             this.label12.TabIndex = 26;
@@ -285,7 +291,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(343, 280);
+            this.label13.Location = new System.Drawing.Point(343, 251);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(38, 13);
             this.label13.TabIndex = 27;
@@ -298,7 +304,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbTurno.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTurno.FormattingEnabled = true;
-            this.cmbTurno.Location = new System.Drawing.Point(346, 299);
+            this.cmbTurno.Location = new System.Drawing.Point(346, 267);
             this.cmbTurno.Name = "cmbTurno";
             this.cmbTurno.Size = new System.Drawing.Size(144, 21);
             this.cmbTurno.TabIndex = 28;
@@ -361,7 +367,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(585, 194);
+            this.label15.Location = new System.Drawing.Point(599, 176);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(27, 13);
             this.label15.TabIndex = 35;
@@ -494,10 +500,10 @@
             this.dgvEpi.AllowUserToDeleteRows = false;
             this.dgvEpi.BackgroundColor = System.Drawing.Color.White;
             this.dgvEpi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEpi.Location = new System.Drawing.Point(509, 210);
+            this.dgvEpi.Location = new System.Drawing.Point(519, 194);
             this.dgvEpi.Name = "dgvEpi";
             this.dgvEpi.ReadOnly = true;
-            this.dgvEpi.Size = new System.Drawing.Size(185, 150);
+            this.dgvEpi.Size = new System.Drawing.Size(185, 185);
             this.dgvEpi.TabIndex = 45;
             // 
             // mskcpf
@@ -527,12 +533,59 @@
             this.mskCEP.Size = new System.Drawing.Size(100, 20);
             this.mskCEP.TabIndex = 49;
             // 
+            // grblogin
+            // 
+            this.grblogin.Controls.Add(this.label18);
+            this.grblogin.Controls.Add(this.label17);
+            this.grblogin.Controls.Add(this.txtsenha);
+            this.grblogin.Controls.Add(this.txtusuario);
+            this.grblogin.Location = new System.Drawing.Point(298, 308);
+            this.grblogin.Name = "grblogin";
+            this.grblogin.Size = new System.Drawing.Size(200, 100);
+            this.grblogin.TabIndex = 50;
+            this.grblogin.TabStop = false;
+            this.grblogin.Text = "Login";
+            this.grblogin.Visible = false;
+            // 
+            // txtusuario
+            // 
+            this.txtusuario.Location = new System.Drawing.Point(81, 26);
+            this.txtusuario.Name = "txtusuario";
+            this.txtusuario.Size = new System.Drawing.Size(100, 20);
+            this.txtusuario.TabIndex = 0;
+            // 
+            // txtsenha
+            // 
+            this.txtsenha.Location = new System.Drawing.Point(81, 63);
+            this.txtsenha.Name = "txtsenha";
+            this.txtsenha.Size = new System.Drawing.Size(100, 20);
+            this.txtsenha.TabIndex = 1;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(29, 29);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(46, 13);
+            this.label17.TabIndex = 2;
+            this.label17.Text = "Usuário:";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(34, 66);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(41, 13);
+            this.label18.TabIndex = 3;
+            this.label18.Text = "Senha:";
+            // 
             // Cadastro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.ClientSize = new System.Drawing.Size(728, 450);
+            this.Controls.Add(this.grblogin);
             this.Controls.Add(this.mskCEP);
             this.Controls.Add(this.msknascimento);
             this.Controls.Add(this.mskcpf);
@@ -584,6 +637,8 @@
             this.pntelefone.ResumeLayout(false);
             this.pntelefone.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEpi)).EndInit();
+            this.grblogin.ResumeLayout(false);
+            this.grblogin.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -637,5 +692,10 @@
         private System.Windows.Forms.MaskedTextBox msknascimento;
         private System.Windows.Forms.MaskedTextBox mskCEP;
         private System.Windows.Forms.MaskedTextBox mskTel;
+        private System.Windows.Forms.GroupBox grblogin;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox txtsenha;
+        private System.Windows.Forms.TextBox txtusuario;
     }
 }

@@ -20,12 +20,13 @@ namespace ProjetoTStTeste
         }
 
         public Pessoa pessoa_carrega;
+        public CadastrarUsuario cadastrar;
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             if (ValidaCPF(mskcpf.Text))
             {
-
+               
                 Pessoa pes = new Pessoa();
 
                 pes.Status = 1;
@@ -40,9 +41,12 @@ namespace ProjetoTStTeste
                 pes.Cep = mskCEP.Text;
                 pes.Id_Profissao = Convert.ToInt32(cmbCargo.SelectedValue);
                 pes.Id_Turno = Convert.ToInt32(cmbTurno.SelectedValue);
-               
-               
-                
+                pes.Usuario = txtusuario.Text;
+                pes.Senha = txtsenha.Text;
+                pes.Administrador = 1;
+
+
+
                 if (rdbFeminino.Checked)
                 {
                     pes.Sexo = "Feminino";
@@ -63,7 +67,9 @@ namespace ProjetoTStTeste
 
                 if (txtId.Text == "")
                 {
-                    txtId.Text = Convert.ToString(pes.Adicionar());
+
+                  txtId.Text = Convert.ToString(pes.Adicionar());
+                    
                     if (dgvTelefone.Rows.Count > 0)
                     {
                         
@@ -155,19 +161,21 @@ namespace ProjetoTStTeste
         {
             profissao pro = new profissao();
             pro.IdProfissao = Convert.ToInt32(cmbCargo.SelectedValue);
-            //Mapeia a origen dos dados, pegando o retorno do PesquisaPorNome, que será um Datatable
+            //Mapeia a origem dos dados, pegando o retorno do PesquisaPorNome, que será um Datatable
             dgvEpi.DataSource = pro.PesquisaPorprofissao();
             dgvEpi.AutoResizeColumns();
 
             CadastrarUsuario Usuario = new CadastrarUsuario();
 
-            if (pro.IdProfissao != null)
-            {
                 if (pro.IdProfissao == 6)
                 {
-                    Usuario.ShowDialog();
+                    grblogin.Visible = true;
                 }
-            }
+                else
+                {
+                    grblogin.Visible = false;
+                }
+            
 
         }
         
