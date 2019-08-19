@@ -26,70 +26,90 @@ namespace ProjetoTStTeste
         {
             if (ValidaCPF(mskcpf.Text))
             {
-               
-                Pessoa pes = new Pessoa();
-
-                pes.Status = 1;
-                pes.Nome = txtNome.Text;
-                pes.Email = txtEmail.Text;
-                pes.Cpf = mskcpf.Text;
-                pes.Dt_nascimento = Convert.ToDateTime(msknascimento.Text);
-                pes.Endereco = txtEndereco.Text;
-                pes.Bairro = txtBairro.Text;
-                pes.Id_Cidade = Convert.ToInt32(cmbCidade.SelectedValue);
-                pes.Id_Estado = Convert.ToInt32(cmbEstado.SelectedValue);
-                pes.Cep = mskCEP.Text;
-                pes.Id_Profissao = Convert.ToInt32(cmbCargo.SelectedValue);
-                pes.Id_Turno = Convert.ToInt32(cmbTurno.SelectedValue);
-                pes.Usuario = txtusuario.Text;
-                pes.Senha = txtsenha.Text;
-                pes.Administrador = 1;
-
-
-
-                if (rdbFeminino.Checked)
-                {
-                    pes.Sexo = "Feminino";
-                }
-                else
-                {
-                    pes.Sexo = "Masculino";
-                }
-
-                if (rdbEmdia.Checked)
-                {
-                    pes.Exame = 1;
-                }
-                if (rdbPendente.Checked)
-                {
-                    pes.Exame = 0;
-                }
-
-                if (txtId.Text == "")
+                if (msknascimento.Text == "" && txtNome.Text == "")
                 {
 
-                  txtId.Text = Convert.ToString(pes.Adicionar());
-                    
-                    if (dgvTelefone.Rows.Count > 0)
+                    Pessoa pes = new Pessoa();
+
+                    pes.Status = 1;
+                    pes.Nome = txtNome.Text;
+                    pes.Email = txtEmail.Text;
+                    pes.Cpf = mskcpf.Text;
+                    pes.Dt_nascimento = Convert.ToDateTime(msknascimento.Text);
+                    pes.Endereco = txtEndereco.Text;
+                    pes.Bairro = txtBairro.Text;
+                    pes.Id_Cidade = Convert.ToInt32(cmbCidade.SelectedValue);
+                    pes.Id_Estado = Convert.ToInt32(cmbEstado.SelectedValue);
+                    pes.Cep = mskCEP.Text;
+                    pes.Id_Profissao = Convert.ToInt32(cmbCargo.SelectedValue);
+                    pes.Id_Turno = Convert.ToInt32(cmbTurno.SelectedValue);
+                    pes.Usuario = txtusuario.Text;
+                    pes.Senha = txtsenha.Text;
+
+                    if (pes.Id_Profissao == 6)
                     {
-                        
-                                 
-                        SalvaTelefones();
-                        
+                        pes.Administrador = 1;
+                    }
+                    else
+                    {
+                        pes.Administrador = 0;
+                    }
+
+
+                    if (rdbFeminino.Checked)
+                    {
+                        pes.Sexo = "Feminino";
+                    }
+                    else
+                    {
+                        pes.Sexo = "Masculino";
+                    }
+
+                    if (rdbEmdia.Checked)
+                    {
+                        pes.Exame = 1;
+                    }
+                    if (rdbPendente.Checked)
+                    {
+                        pes.Exame = 0;
+                    }
+
+                    if (txtId.Text == "")
+                    {
+
+                        txtId.Text = Convert.ToString(pes.Adicionar());
+
+                        if (dgvTelefone.Rows.Count > 0)
+                        {
+
+
+                            SalvaTelefones();
+                            this.Close();
+
+                        }
+                    }
+                    else
+                    {
+                        pes.Id_Funcionario = Convert.ToInt32(txtId.Text);
+                        pes.Atualizar();
                     }
                 }
                 else
                 {
-                    pes.Id_Funcionario = Convert.ToInt32(txtId.Text);
-                    pes.Atualizar();
+                    MessageBox.Show("data");
                 }
+
+
             }
             else
             {
                 MessageBox.Show("CPF inválido!");
             }
 
-            this.Close();
+                
+            
+
+           
         }
 
         private void SalvaTelefones()
@@ -139,6 +159,10 @@ namespace ProjetoTStTeste
             cmbTurno.DataSource = pessoas.Turnolista();
             cmbTurno.SelectedValue = 0;
 
+           
+
+           
+
 
         }
 
@@ -167,14 +191,8 @@ namespace ProjetoTStTeste
 
             CadastrarUsuario Usuario = new CadastrarUsuario();
 
-                if (pro.IdProfissao == 6)
-                {
-                    grblogin.Visible = true;
-                }
-                else
-                {
-                    grblogin.Visible = false;
-                }
+            
+              
             
 
         }
@@ -232,6 +250,9 @@ namespace ProjetoTStTeste
         private void Pessoas_Shown(object sender, EventArgs e)
         {
            
+               
+            
+
             if (pessoa_carrega != null)
             {
                 txtId.Text = pessoa_carrega.Id_Funcionario.ToString();
@@ -274,8 +295,9 @@ namespace ProjetoTStTeste
                     dgvTelefone.DataSource = pessoa_carrega.Pesquisatelefone();
                     dgvTelefone.AutoResizeColumns();
                     dgvTelefone.Columns[4].Visible = false;
+                    grblogin.Visible = false;
 
-                    
+
                 }
                 if (pessoa_carrega.Exame == 0)
                 {
@@ -434,5 +456,55 @@ namespace ProjetoTStTeste
             
         }
 
+        private void mskcpf_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
+
+        private delegate void PosicionaCursorDelegate(int posicao);
+
+        private void PosicionaCursor(int posicao)
+        {
+            mskcpf.SelectionStart = posicao;
+        }
+
+        private void mskcpf_Enter(object sender, EventArgs e)
+        {
+            this.BeginInvoke(new PosicionaCursorDelegate(PosicionaCursor), new object[] { 0 });
+        }
+
+        private void msknascimento_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
+
+        private delegate void PosicionaCursorDelegate2(int posicao);
+
+        private void PosicionaCursor2(int posicao)
+        {
+            msknascimento.SelectionStart = posicao;
+        }
+
+        private void msknascimento_Enter_1(object sender, EventArgs e)
+        {
+            this.BeginInvoke(new PosicionaCursorDelegate2(PosicionaCursor2), new object[] { 0 });
+        }
+
+        private void mskCEP_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
+
+        private delegate void PosicionaCursorDelegate3(int posicao);
+
+        private void PosicionaCursor3(int posicao)
+        {
+            mskCEP.SelectionStart = posicao;
+        }
+
+        private void mskCEP_Enter(object sender, EventArgs e)
+        {
+            this.BeginInvoke(new PosicionaCursorDelegate3(PosicionaCursor3), new object[] { 0 });
+        }
     }
 }
